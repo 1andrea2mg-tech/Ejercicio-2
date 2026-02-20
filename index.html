@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<form action="procesa.php" onsubmit="return validaFormulario()" method="post">
+    <h1>Formulario Reserva</h1>
+    <p>
+        <label for="nombreyapell">Nombre y Apellidos:</label>
+        <input type="text" name="nombreyapellidos" id="nombreyapell">
+    </p>
+    <p>
+        <label for="diasalojamiento">Dias de alojamiento:</label>
+        <input type="number" name="diasalojamien" id="diasalojamiento">
+    </p>
+    <p>
+        <label for="fumador">Fumador</label>
+        <input type="checkbox" id="fumador">
+    </p>
+    <p>
+        <label for="fechaalojamiento">Fecha de alojamiento:</label>
+        <input type="date" name="fechaaloja" id="fechaalojamiento">
+    </p>
+    <input type="submit" name="enviar" id="enviar" value="Reservar">
+    </form>
+        <script>
+            function validaFormulario(){
+                let nombreyapell = document.getElementById("nombreyapell").value;
+            if (nombreyapell.length<10){
+                alert("El nombre y apellidos no pueden ser menores de 10 carácteres");
+                return false;
+            }
+
+            let diasalojamiento = document.getElementById("diasalojamiento").value;
+            if (diasalojamiento<3){
+                alert("No puedes reservar menos de 3 días");
+                return false;
+            }
+            let fumador = document.getElementById("fumador").checked;
+            if (fumador==true){
+                alert("No se permiten fumadores en este hotel");
+                return false;
+            }
+            alert("El formulario fue correctamente enviado");
+            return true;
+        }
+        </script>
+</body>
+</html>
