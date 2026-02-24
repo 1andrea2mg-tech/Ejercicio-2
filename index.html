@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        .aviso {color: red;font-size: .5em;}
+    </style>
 </head>
 <body>
 <form action="procesa.php" onsubmit="return validaFormulario()" method="post">
@@ -11,10 +14,12 @@
     <p>
         <label for="nombreyapell">Nombre y Apellidos:</label>
         <input type="text" name="nombreyapellidos" id="nombreyapell">
+        <p id="aviso-nombreyape" class="aviso"></p>
     </p>
     <p>
         <label for="diasalojamiento">Dias de alojamiento:</label>
         <input type="number" name="diasalojamien" id="diasalojamiento">
+        <p id="aviso-diasalojam" class="aviso"></p>
     </p>
     <p>
         <label for="fumador">Fumador</label>
@@ -28,15 +33,19 @@
     </form>
         <script>
             function validaFormulario(){
+
+
                 let nombreyapell = document.getElementById("nombreyapell").value;
             if (nombreyapell.length<10){
-                alert("El nombre y apellidos no pueden ser menores de 10 carácteres");
+                document.getElementById("aviso-nombreyape").innerHTML = "No puede haber menos de 10 carácteres";
+                document.getElementById("aviso-nombreyape").focus();
                 return false;
             }
 
             let diasalojamiento = document.getElementById("diasalojamiento").value;
             if (diasalojamiento<3){
-                alert("No puedes reservar menos de 3 días");
+                document.getElementById("aviso-diasalojam").innerHTML = "No puedes reservar menos de 3 días";
+                document.getElementById("aviso-diasalojam").focus();
                 return false;
             }
             let fumador = document.getElementById("fumador").checked;
